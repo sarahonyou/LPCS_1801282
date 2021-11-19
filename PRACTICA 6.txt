@@ -1,0 +1,36 @@
+1 script y el archivo de tecto de la base 64
+
+#!/usr/bin/python
+# encoding: utf-8
+#------------------------------------------------------
+# Rafael Ramirez
+# Sasser_Blaster 2007
+# Codificador base64
+# Lenguaje: Python
+#------------------------------------------------------
+
+
+
+
+
+import base64                     #importamos la libreria de base64
+txtfile = "archivo.txt"           #ponemos el archivo a cifrar
+txt_text = 'encoded_b64 = \\\n"""' + base64.encodestring(open(txtfile,"rb").read()) + '"""'  #indicamos que habra el txtfile (archivo.txt) y codifique la cadena a base64 y el resultado lo ponga entre comillas """
+print txt_text    #imprime en la pantalla txt_text que contiene el resultado codificado a base64
+
+
+#opcional guarda el resultado codificado a un arhivo de texto
+filename = "encoded.txt"   #indicamos el archivo a crear
+
+try:    
+    txt = open(filename, "w")   #abrimos el archivo encoded.txt y le asignamos el parametro w  = solo escritura (si el archivo existe lo elimina)
+    txt.write(txt_text)         #escribimos el contenido de la variable txt_text en el archivo de texto
+    txt.close()                 #indicamos la funcion  ‘close’ que cierra los archivos con los datos guardados
+
+#mensaje de error cuando no se puede guardar el archivo de texto
+except IOError:
+    print"el archivo %s no fue guardado!" % filename
+    
+#mensaje cuando  se puedo guardar el archivo de texto
+else:
+    print"el archivo %s se guardo correctamente!" % filename

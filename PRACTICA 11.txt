@@ -1,0 +1,32 @@
+def start_setup():
+    # raw_input returns the empty string for "enter"
+    yes = set(['yes','y', 'ye', ''])
+    no = set(['no','n'])
+    prompt = '> '
+
+    print ("Hola, bienvenido a Text File Creator 2000")
+    print ("Para comenzar, asigne un nombre a su archivo (sin extensión)")
+
+    filename = input(prompt)
+
+    print ("¡Genial, ahora proporciona el contenido del archivo!)")
+
+    content = input(prompt)
+
+    confirm = input("> ¿Quieres continuar con la creación de " + filename + ".txt ? (Yes/No)").lower()
+
+    if confirm in yes:
+        text_file = open(filename + ".txt", "w")
+        text_file.write(content)
+        text_file.close()
+        print ("Archivo creado correctamente, vuelva pronto!")
+        return True
+    elif confirm in no:
+        print ("¡Vale, no pasará nada!")
+        return False
+    else:
+       print ("Por favor responda sí o no, la configuración comenzará de nuevo.")
+       # start again
+       start_setup()
+
+start_setup()
